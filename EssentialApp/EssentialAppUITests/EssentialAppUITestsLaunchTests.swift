@@ -1,13 +1,13 @@
 //
-//  Essential_FeedUITestsLaunchTests.swift
-//  Essential FeedUITests
+//  EssentialAppUITestsLaunchTests.swift
+//  EssentialAppUITests
 //
 //  Created by Ben Rosen on 13/10/2023.
 //
 
 import XCTest
 
-final class Essential_FeedUITestsLaunchTests: XCTestCase {
+final class EssentialAppUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

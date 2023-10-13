@@ -1,13 +1,13 @@
 //
-//  Essential_FeedUITests.swift
-//  Essential FeedUITests
+//  EssentialAppUITests.swift
+//  EssentialAppUITests
 //
 //  Created by Ben Rosen on 13/10/2023.
 //
 
 import XCTest
 
-final class Essential_FeedUITests: XCTestCase {
+final class EssentialAppUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

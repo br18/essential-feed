@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  Essential Feed
+//  EssentialApp
 //
 //  Created by Ben Rosen on 13/10/2023.
 //
