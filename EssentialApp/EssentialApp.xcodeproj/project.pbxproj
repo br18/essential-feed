@@ -49,6 +49,7 @@
 		B56A84F62AD982EB003D4C3F /* EssentialAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56A84FA2AD982EB003D4C3F /* EssentialAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialAppUITests.swift; sourceTree = "<group>"; };
 		B56A84FC2AD982EB003D4C3F /* EssentialAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B56A85092AD9860E003D4C3F /* SharedAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SharedAPI; path = ../SharedAPI; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +80,7 @@
 		B56A84CD2AD982E7003D4C3F = {
 			isa = PBXGroup;
 			children = (
+				B56A85092AD9860E003D4C3F /* SharedAPI */,
 				B56A84D82AD982E7003D4C3F /* EssentialApp */,
 				B56A84EF2AD982EB003D4C3F /* EssentialAppTests */,
 				B56A84F92AD982EB003D4C3F /* EssentialAppUITests */,
