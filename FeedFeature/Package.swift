@@ -4,24 +4,17 @@
 import PackageDescription
 
 let package = Package(
-    name: "FeedAPI",
+    name: "FeedFeature",
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "FeedAPI",
-            targets: ["FeedAPI"]),
-    ],
-    dependencies: [
-          .package(name: "FeedFeature", path: "../FeedFeature")
+            name: "FeedFeature",
+            targets: ["FeedFeature"]),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "FeedAPI",
-            dependencies: ["FeedFeature"]),
-        .testTarget(
-            name: "FeedAPITests",
-            dependencies: ["FeedAPI"]),
+            name: "FeedFeature")
     ]
 )
