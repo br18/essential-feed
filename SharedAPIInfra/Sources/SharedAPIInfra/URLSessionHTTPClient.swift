@@ -17,14 +17,26 @@ public final class URLSessionHTTPClient: HTTPClient {
     }
 
     private struct URLSessionTaskWrapper: HTTPClientTask {
-        func cancel() {
+        let wrapped: URLSessionTask
 
+        func cancel() {
+            wrapped.cancel()
         }
     }
 
+    private struct TempError: Error {}
+
     public func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) -> HTTPClientTask {
-        let task = session.dataTask(with: url)
+        let task = session.dataTask(with: url) { _, _, error in
+            completion(Result {
+                if let error = error {
+                    throw error
+                } else {
+                    throw TempError()
+                }
+            })
+        }
         task.resume()
-        return URLSessionTaskWrapper()
+        return URLSessionTaskWrapper(wrapped: task)
     }
 }
