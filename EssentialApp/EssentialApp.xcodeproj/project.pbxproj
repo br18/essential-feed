@@ -52,6 +52,7 @@
 		B56A85092AD9860E003D4C3F /* SharedAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SharedAPI; path = ../SharedAPI; sourceTree = "<group>"; };
 		B56A850A2AD98801003D4C3F /* SharedAPIInfra */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SharedAPIInfra; path = ../SharedAPIInfra; sourceTree = "<group>"; };
 		B56A850B2AD99414003D4C3F /* SharedTestHelpers */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SharedTestHelpers; path = ../SharedTestHelpers; sourceTree = "<group>"; };
+		B56A850C2AD9A2AD003D4C3F /* FeedAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = FeedAPI; path = ../FeedAPI; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +83,7 @@
 		B56A84CD2AD982E7003D4C3F = {
 			isa = PBXGroup;
 			children = (
+				B56A850C2AD9A2AD003D4C3F /* FeedAPI */,
 				B56A850B2AD99414003D4C3F /* SharedTestHelpers */,
 				B56A850A2AD98801003D4C3F /* SharedAPIInfra */,
 				B56A85092AD9860E003D4C3F /* SharedAPI */,
