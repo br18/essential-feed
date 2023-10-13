@@ -12,7 +12,8 @@ let package = Package(
             targets: ["SharedAPIInfra"]),
     ],
     dependencies: [
-          .package(name: "SharedAPI", path: "../SharedAPI")
+          .package(name: "SharedAPI", path: "../SharedAPI"),
+          .package(name: "SharedTestHelpers", path: "../SharedTestHelpers")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -22,6 +23,6 @@ let package = Package(
             dependencies: ["SharedAPI"]),
         .testTarget(
             name: "SharedAPIInfraTests",
-            dependencies: ["SharedAPIInfra"]),
+            dependencies: ["SharedAPIInfra", "SharedTestHelpers"]),
     ]
 )
