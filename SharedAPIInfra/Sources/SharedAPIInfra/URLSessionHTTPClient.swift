@@ -24,7 +24,7 @@ public final class URLSessionHTTPClient: HTTPClient {
         }
     }
 
-    private struct TempError: Error {}
+    private struct UnexpectedValuesRepresentation: Error {}
 
     public func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) -> HTTPClientTask {
         let task = session.dataTask(with: url) { data, response, error in
@@ -34,7 +34,7 @@ public final class URLSessionHTTPClient: HTTPClient {
                 } else if let data = data, let response = response as? HTTPURLResponse {
                     return (data, response)
                 } else {
-                    throw TempError()
+                    throw UnexpectedValuesRepresentation()
                 }
             })
         }
