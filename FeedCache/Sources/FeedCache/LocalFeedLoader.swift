@@ -22,7 +22,9 @@ public final class LocalFeedLoader {
         try store.insert(feed.toLocal(), timestamp: currentDate())
     }
     public func load() throws -> [FeedImage] {
-        _ = try store.retrieve()
+        if let cache = try store.retrieve() {
+            return cache.feed.toModels()
+        }
         return []
     }
 }
@@ -30,5 +32,11 @@ public final class LocalFeedLoader {
 private extension Array where Element == FeedImage {
     func toLocal() -> [LocalFeedImage] {
         return map { LocalFeedImage(id: $0.id, description: $0.description, location: $0.location, url: $0.url) }
+    }
+}
+
+private extension Array where Element == LocalFeedImage {
+    func toModels() -> [FeedImage] {
+        return map { FeedImage(id: $0.id, description: $0.description, location: $0.location, url: $0.url) }
     }
 }
