@@ -1,0 +1,31 @@
+{
+  "configurations" : [
+    {
+      "id" : "DD2FB47B-58E2-487B-8DDF-34503AFA4DA8",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:..\/FeedAPI",
+        "identifier" : "FeedAPITests",
+        "name" : "FeedAPITests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/SharedAPIInfra",
+        "identifier" : "SharedAPIInfraTests",
+        "name" : "SharedAPIInfraTests"
+      }
+    }
+  ],
+  "version" : 1
+}
