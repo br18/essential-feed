@@ -21,6 +21,11 @@ public final class LocalFeedLoader {
         try store.deleteCachedFeed()
         try store.insert(feed.toLocal(), timestamp: currentDate())
     }
+
+    public func load() throws -> [FeedImage] {
+        _ = try? store.retrieve()
+        return []
+    }
 }
 
 private extension Array where Element == FeedImage {
