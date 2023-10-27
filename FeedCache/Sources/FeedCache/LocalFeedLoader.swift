@@ -30,8 +30,11 @@ public final class LocalFeedLoader {
     }
 
     public func validateCache() throws {
-        _ = try? store.retrieve()
-        _ = try? store.deleteCachedFeed()
+        do {
+            let _ = try store.retrieve()
+        } catch {
+            _ = try? store.deleteCachedFeed()
+        }
     }
 }
 
