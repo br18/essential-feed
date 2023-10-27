@@ -29,14 +29,16 @@ public final class LocalFeedLoader {
         return []
     }
 
+    private struct InvalidCache: Error {}
+
     public func validateCache() throws {
         do {
             let cachedFeed = try store.retrieve()
             if let cachedFeed = cachedFeed, !FeedCachePolicy.validate(cachedFeed.timestamp, against: currentDate()) {
-                _ = try store.deleteCachedFeed()
+                throw InvalidCache()
             }
         } catch {
-            _ = try store.deleteCachedFeed()
+            try store.deleteCachedFeed()
         }
     }
 }
