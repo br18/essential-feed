@@ -36,7 +36,7 @@ public final class LocalFeedLoader {
                 _ = try? store.deleteCachedFeed()
             }
         } catch {
-            _ = try? store.deleteCachedFeed()
+            _ = try store.deleteCachedFeed()
         }
     }
 }
