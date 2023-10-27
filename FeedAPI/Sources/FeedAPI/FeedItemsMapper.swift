@@ -11,6 +11,10 @@ public final class FeedItemsMapper {
             let location: String?
             let image: URL
         }
+
+        var images: [FeedImage] {
+            items.map { FeedImage(id: $0.id, description: $0.description, location: $0.location, url: $0.image) }
+        }
     }
 
     public enum Error: Swift.Error {
@@ -18,10 +22,10 @@ public final class FeedItemsMapper {
     }
 
     public static func map(_ data: Data, from response: HTTPURLResponse) throws -> [FeedImage] {
-        guard response.isOK, (try? JSONDecoder().decode(Root.self, from: data)) != nil else {
+        guard response.isOK, let root = try? JSONDecoder().decode(Root.self, from: data) else {
             throw Error.invalidData
         }
 
-        return []
+        return root.images
     }
 }
