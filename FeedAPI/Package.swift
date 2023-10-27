@@ -12,7 +12,8 @@ let package = Package(
             targets: ["FeedAPI"]),
     ],
     dependencies: [
-          .package(name: "FeedFeature", path: "../FeedFeature")
+          .package(name: "FeedFeature", path: "../FeedFeature"),
+          .package(name: "SharedTestHelpers", path: "../SharedTestHelpers")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -22,6 +23,6 @@ let package = Package(
             dependencies: ["FeedFeature"]),
         .testTarget(
             name: "FeedAPITests",
-            dependencies: ["FeedAPI"]),
+            dependencies: ["FeedAPI", "SharedTestHelpers"]),
     ]
 )
