@@ -31,7 +31,10 @@ public final class LocalFeedLoader {
 
     public func validateCache() throws {
         do {
-            let _ = try store.retrieve()
+            let cachedFeed = try store.retrieve()
+            if let cachedFeed = cachedFeed, !FeedCachePolicy.validate(cachedFeed.timestamp, against: currentDate()) {
+                _ = try? store.deleteCachedFeed()
+            }
         } catch {
             _ = try? store.deleteCachedFeed()
         }
