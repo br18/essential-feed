@@ -21,11 +21,17 @@ public final class LocalFeedLoader {
         try store.deleteCachedFeed()
         try store.insert(feed.toLocal(), timestamp: currentDate())
     }
+    
     public func load() throws -> [FeedImage] {
         if let cache = try store.retrieve(), FeedCachePolicy.validate(cache.timestamp, against: currentDate()) {
             return cache.feed.toModels()
         }
         return []
+    }
+
+    public func validateCache() throws {
+        _ = try? store.retrieve()
+        _ = try? store.deleteCachedFeed()
     }
 }
 
