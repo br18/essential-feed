@@ -33,8 +33,8 @@ public final class LocalFeedLoader {
 
     public func validateCache() throws {
         do {
-            let cachedFeed = try store.retrieve()
-            if let cachedFeed = cachedFeed, !FeedCachePolicy.validate(cachedFeed.timestamp, against: currentDate()) {
+            if let cachedFeed = try store.retrieve(), 
+                !FeedCachePolicy.validate(cachedFeed.timestamp, against: currentDate()) {
                 throw InvalidCache()
             }
         } catch {
