@@ -42,6 +42,12 @@ class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
         assertThatInsertDeliversNoErrorOnNonEmptyCache(on: sut)
     }
 
+    func test_insert_overridesPreviouslyInsertedCacheValues() {
+        let sut = makeSUT()
+
+        assertThatInsertOverridesPreviouslyInsertedCacheValues(on: sut)
+    }
+
     // - MARK: Helpers
 
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> FeedStore {
