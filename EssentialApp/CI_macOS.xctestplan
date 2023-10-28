@@ -33,6 +33,13 @@
         "identifier" : "FeedCacheTests",
         "name" : "FeedCacheTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/FeedCacheInfra",
+        "identifier" : "FeedCachInfraTests",
+        "name" : "FeedCacheInfraTests"
+      }
     }
   ],
   "version" : 1
