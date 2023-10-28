@@ -55,6 +55,7 @@
 /* Begin PBXFileReference section */
 		B52038AB2AED5CCF00DEBAA9 /* SharedUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SharedUI; path = ../SharedUI; sourceTree = "<group>"; };
 		B52038AC2AED5D0600DEBAA9 /* FeedUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = FeedUI; path = ../FeedUI; sourceTree = "<group>"; };
+		B52038AD2AED629400DEBAA9 /* SharedPresentation */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SharedPresentation; path = ../SharedPresentation; sourceTree = "<group>"; };
 		B55094A42AED44BC005DCC1D /* EssentialFeedCacheIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedCacheIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55094A62AED44BC005DCC1D /* EssentialFeedCacheIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialFeedCacheIntegrationTests.swift; sourceTree = "<group>"; };
 		B55094AD2AED4521005DCC1D /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
@@ -141,6 +142,7 @@
 		B56A84CD2AD982E7003D4C3F = {
 			isa = PBXGroup;
 			children = (
+				B52038AD2AED629400DEBAA9 /* SharedPresentation */,
 				B52038AC2AED5D0600DEBAA9 /* FeedUI */,
 				B52038AB2AED5CCF00DEBAA9 /* SharedUI */,
 				B558E9582AED12230076DE05 /* FeedCacheInfra */,
