@@ -11,13 +11,18 @@ let package = Package(
             name: "FeedCacheInfra",
             targets: ["FeedCacheInfra"]),
     ],
+    dependencies: [
+          .package(name: "FeedCache", path: "../FeedCache"),
+          .package(name: "SharedTestHelpers", path: "../SharedTestHelpers")
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "FeedCacheInfra"),
+            name: "FeedCacheInfra",
+            dependencies: ["FeedCache"]),
         .testTarget(
             name: "FeedCacheInfraTests",
-            dependencies: ["FeedCacheInfra"]),
+            dependencies: ["FeedCacheInfra", "SharedTestHelpers"]),
     ]
 )

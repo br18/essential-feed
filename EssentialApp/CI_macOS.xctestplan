@@ -9,7 +9,8 @@
     }
   ],
   "defaultOptions" : {
-    "codeCoverage" : false
+    "codeCoverage" : false,
+    "testExecutionOrdering" : "random"
   },
   "testTargets" : [
     {
@@ -24,6 +25,13 @@
         "containerPath" : "container:..\/SharedAPIInfra",
         "identifier" : "SharedAPIInfraTests",
         "name" : "SharedAPIInfraTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/FeedCache",
+        "identifier" : "FeedCacheTests",
+        "name" : "FeedCacheTests"
       }
     }
   ],
