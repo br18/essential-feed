@@ -2,7 +2,13 @@ import Foundation
 import FeedCache
 
 extension CoreDataFeedStore: FeedStore {
-    public func deleteCachedFeed() throws { }
+    public func deleteCachedFeed() throws { 
+        try performSync { context in
+            Result {
+                try ManagedCache.deleteCache(in: context)
+            }
+        }
+    }
 
     public func insert(_ feed: [FeedCache.LocalFeedImage], timestamp: Date) throws {
         try performSync { context in
