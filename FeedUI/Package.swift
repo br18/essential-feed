@@ -4,23 +4,25 @@
 import PackageDescription
 
 let package = Package(
-    name: "EssentialFeediOS",
-    platforms: [
-        .iOS(.v17)
-    ],
+    name: "FeedUI",
+    platforms: [.iOS(.v17)],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "EssentialFeediOS",
-            targets: ["EssentialFeediOS"]),
+            name: "FeedUI",
+            targets: ["FeedUI"]),
+    ],
+    dependencies: [
+          .package(name: "SharedUI", path: "../SharedUI")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "EssentialFeediOS"),
+            name: "FeedUI",
+            dependencies: ["SharedUI"]),
         .testTarget(
-            name: "EssentialFeediOSTests",
-            dependencies: ["EssentialFeediOS"]),
+            name: "FeedUITests",
+            dependencies: ["FeedUI"]),
     ]
 )

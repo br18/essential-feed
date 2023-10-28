@@ -1,7 +1,7 @@
 import XCTest
-@testable import EssentialFeediOS
+@testable import FeedUI
 
-final class EssentialFeediOSTests: XCTestCase {
+final class FeedUITests: XCTestCase {
     func testExample() throws {
         // XCTest Documentation
         // https://developer.apple.com/documentation/xctest
