@@ -10,6 +10,17 @@ class LoadResourcePresenterTests: XCTestCase {
         XCTAssertTrue(view.messages.isEmpty, "Expected no view messages")
     }
 
+    func test_didStartLoading_displaysNoErrorMessageAndStartsLoading() {
+        let (sut, view) = makeSUT()
+
+        sut.didStartLoading()
+
+        XCTAssertEqual(view.messages, [
+            .display(errorMessage: .none),
+            .display(isLoading: true)
+        ])
+    }
+
     private typealias SUT = LoadResourcePresenter<String, ViewSpy>
 
     private func makeSUT(
