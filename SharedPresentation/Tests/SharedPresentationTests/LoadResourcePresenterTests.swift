@@ -21,6 +21,19 @@ class LoadResourcePresenterTests: XCTestCase {
         ])
     }
 
+    func test_didFinishLoadingResource_displaysResourceAndStopsLoading() {
+        let (sut, view) = makeSUT(mapper: { resource in
+            resource + " view model"
+        })
+
+        sut.didFinishLoading(with: "resource")
+
+        XCTAssertEqual(view.messages, [
+            .display(resourceViewModel: "resource view model"),
+            .display(isLoading: false)
+        ])
+    }
+
     private typealias SUT = LoadResourcePresenter<String, ViewSpy>
 
     private func makeSUT(
