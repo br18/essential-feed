@@ -37,8 +37,15 @@
     {
       "target" : {
         "containerPath" : "container:..\/FeedCacheInfra",
-        "identifier" : "FeedCachInfraTests",
+        "identifier" : "FeedCacheInfraTests",
         "name" : "FeedCacheInfraTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "SharedPresentationTests",
+        "name" : "SharedPresentationTests"
       }
     }
   ],
