@@ -7,7 +7,15 @@ public protocol ResourceView {
 }
 
 public final class LoadResourcePresenter<Resource, View: ResourceView> {
+
     public typealias Mapper = (Resource) throws -> View.ResourceViewModel
+
+    public static var loadError: String {
+        NSLocalizedString("GENERIC_CONNECTION_ERROR",
+                          tableName: "Shared",
+                          bundle: SharedPresentation.bundle,
+                          comment: "Error message displayed when we can't load the resource from the server")
+    }
 
     private let resourceView: View
     private let loadingView: ResourceLoadingView
@@ -30,7 +38,10 @@ public final class LoadResourcePresenter<Resource, View: ResourceView> {
         do {
             resourceView.display(try mapper(resource))
             loadingView.display(ResourceLoadingViewModel(isLoading: false))
-        } catch {}
+        } catch {
+            errorView.display(.error(message: Self.loadError))
+            loadingView.display(ResourceLoadingViewModel(isLoading: false))
+        }
 
     }
 }
