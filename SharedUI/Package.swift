@@ -13,7 +13,8 @@ let package = Package(
             targets: ["SharedUI"]),
     ],
     dependencies: [
-          .package(name: "SharedPresentation", path: "../SharedPresentation")
+          .package(name: "SharedPresentation", path: "../SharedPresentation"),
+          .package(name: "SharedTestHelpers", path: "../SharedTestHelpers")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -23,6 +24,6 @@ let package = Package(
             dependencies: ["SharedPresentation"]),
         .testTarget(
             name: "SharedUITests",
-            dependencies: ["SharedUI"]),
+            dependencies: ["SharedUI", "SharedTestHelpers"]),
     ]
 )
