@@ -1,6 +1,7 @@
 import Foundation
 import SharedUI
 import UIKit
+import FeedUI
 
 extension ListViewController {
     func simulateAppearance() {
@@ -76,4 +77,28 @@ extension ListViewController {
         let index = IndexPath(row: row, section: section)
         return ds?.tableView(tableView, cellForRowAt: index)
     }
+}
+
+extension ListViewController {
+
+    @discardableResult
+    func simulateFeedImageViewVisible(at index: Int) -> FeedImageCell? {
+        return feedImageView(at: index) as? FeedImageCell
+    }
+
+    func simulateTapOnFeedImage(at row: Int) {
+        let delegate = tableView.delegate
+        let index = IndexPath(row: row, section: feedImagesSection)
+        delegate?.tableView?(tableView, didSelectRowAt: index)
+    }
+
+    func numberOfRenderedFeedImageViews() -> Int {
+        numberOfRows(in: feedImagesSection)
+    }
+
+    func feedImageView(at row: Int) -> UITableViewCell? {
+        cell(row: row, section: feedImagesSection)
+    }
+
+    private var feedImagesSection: Int { 0 }
 }
