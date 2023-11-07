@@ -13,14 +13,15 @@ let package = Package(
             targets: ["FeedUI"]),
     ],
     dependencies: [
-          .package(name: "SharedUI", path: "../SharedUI")
+          .package(name: "SharedUI", path: "../SharedUI"),
+          .package(name: "FeedPresentation", path: "../FeedPresentation")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "FeedUI",
-            dependencies: ["SharedUI"]),
+            dependencies: ["SharedUI", "FeedPresentation"]),
         .testTarget(
             name: "FeedUITests",
             dependencies: ["FeedUI"]),

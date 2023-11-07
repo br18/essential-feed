@@ -16,17 +16,17 @@ class FeedUIIntegrationTests: XCTestCase {
         XCTAssertEqual(sut.title, FeedPresenter.title)
     }
 
-//    func test_loadFeedCompletion_rendersSuccessfullyLoadedFeed() {
-//        let image0 = makeImage(description: "a description", location: "a location")
-//        let image1 = makeImage(description: nil, location: "another location")
-//        let (sut, loader) = makeSUT()
-//
-//        sut.loadViewIfNeeded()
-//        assertThat(sut, isRendering: [])
-//
-//        loader.completeFeedLoading(with: [image0, image1], at: 0)
-//        assertThat(sut, isRendering: [image0, image1])
-//    }
+    func test_loadFeedCompletion_rendersSuccessfullyLoadedFeed() {
+        let image0 = makeImage(description: "a description", location: "a location")
+        let image1 = makeImage(description: nil, location: "another location")
+        let (sut, loader) = makeSUT()
+
+        sut.simulateAppearance()
+        assertThat(sut, isRendering: [])
+
+        loader.completeFeedLoading(with: [image0, image1], at: 0)
+        assertThat(sut, isRendering: [image0, image1])
+    }
     
     private func makeSUT(
         selection: @escaping (FeedImage) -> Void = { _ in },
