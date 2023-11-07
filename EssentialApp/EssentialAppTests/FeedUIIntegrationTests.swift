@@ -22,7 +22,7 @@ class FeedUIIntegrationTests: XCTestCase {
         var selectedImages = [FeedImage]()
         let (sut, loader) = makeSUT(selection: { selectedImages.append($0) })
 
-        sut.simulateAppearance()
+        sut.loadViewIfNeeded()
         loader.completeFeedLoading(with: [image0, image1], at: 0)
 
         sut.simulateTapOnFeedImage(at: 0)
@@ -32,12 +32,31 @@ class FeedUIIntegrationTests: XCTestCase {
         XCTAssertEqual(selectedImages, [image0, image1])
     }
 
+    func test_loadFeedActions_requestFeedFromLoader() {
+        let (sut, loader) = makeSUT()
+        XCTAssertEqual(loader.loadFeedCallCount, 0, "Expected no loading requests before view is loaded")
+
+        sut.loadViewIfNeeded()
+        XCTAssertEqual(loader.loadFeedCallCount, 1, "Expected a loading request once view is loaded")
+
+        sut.simulateUserInitiatedReload()
+        XCTAssertEqual(loader.loadFeedCallCount, 1, "Expected no request until previous completes")
+
+        loader.completeFeedLoading(at: 0)
+        sut.simulateUserInitiatedReload()
+        XCTAssertEqual(loader.loadFeedCallCount, 2, "Expected another loading request once user initiates a reload")
+
+        loader.completeFeedLoading(at: 1)
+        sut.simulateUserInitiatedReload()
+        XCTAssertEqual(loader.loadFeedCallCount, 3, "Expected yet another loading request once user initiates another reload")
+    }
+
     func test_loadFeedCompletion_rendersSuccessfullyLoadedFeed() {
         let image0 = makeImage(description: "a description", location: "a location")
         let image1 = makeImage(description: nil, location: "another location")
         let (sut, loader) = makeSUT()
 
-        sut.simulateAppearance()
+        sut.loadViewIfNeeded()
         assertThat(sut, isRendering: [])
 
         loader.completeFeedLoading(with: [image0, image1], at: 0)
