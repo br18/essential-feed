@@ -10,7 +10,16 @@ public final class LocalFeedImageDataLoader {
 }
 
 extension LocalFeedImageDataLoader: FeedImageDataCache {
+    public enum SaveError: Error {
+        case failed
+    }
+
     public func save(_ data: Data, for url: URL) throws {
-        try? store.insert(data, for: url)
+        do {
+            try store.insert(data, for: url)
+        } catch {
+            throw SaveError.failed
+        }
+
     }
 }
