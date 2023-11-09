@@ -1,5 +1,6 @@
 import XCTest
 
+#if canImport(UIKit)
 public extension XCTestCase {
 
     func assert(snapshot: UIImage, named name: String, file: StaticString = #filePath, line: UInt = #line) {
@@ -55,3 +56,4 @@ public extension XCTestCase {
     }
 
 }
+#endif
