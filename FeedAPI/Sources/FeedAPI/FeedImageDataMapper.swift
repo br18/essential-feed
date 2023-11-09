@@ -6,6 +6,10 @@ public final class FeedImageDataMapper {
     }
 
     public static func map(_ data: Data, from response: HTTPURLResponse) throws -> Data {
-        throw Error.invalidData
+        guard response.isOK, !data.isEmpty else {
+            throw Error.invalidData
+        }
+
+        return data
     }
 }
