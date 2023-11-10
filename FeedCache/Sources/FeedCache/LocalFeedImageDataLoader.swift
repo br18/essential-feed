@@ -32,13 +32,13 @@ extension LocalFeedImageDataLoader: FeedImageDataLoader {
 
     public func loadImageData(from url: URL) throws -> Data {
         do {
-            _ = try store.retrieve(dataForURL: url)
+            if let data = try store.retrieve(dataForURL: url) {
+                return data
+            }
         } catch {
             throw LoadError.failed
         }
-
+        
         throw LoadError.notFound
     }
-    
-
 }
