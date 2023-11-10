@@ -17,4 +17,13 @@ class LoadFeedImageDataFromCacheUseCaseTests: XCTestCase {
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, store)
     }
+
+    func test_loadImageDataFromURL_requestsStoredDataForURL() {
+        let (sut, store) = makeSUT()
+        let url = anyURL()
+
+        _ = try? sut.loadImageData(from: url)
+
+        XCTAssertEqual(store.receivedMessages, [.retrieve(dataFor: url)])
+    }
 }

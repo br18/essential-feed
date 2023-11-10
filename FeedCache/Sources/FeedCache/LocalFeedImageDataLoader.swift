@@ -23,3 +23,12 @@ extension LocalFeedImageDataLoader: FeedImageDataCache {
 
     }
 }
+
+extension LocalFeedImageDataLoader: FeedImageDataLoader {
+    public func loadImageData(from url: URL) throws -> Data {
+        _ = try? store.retrieve(dataForURL: url)
+        return Data()
+    }
+    
+
+}
