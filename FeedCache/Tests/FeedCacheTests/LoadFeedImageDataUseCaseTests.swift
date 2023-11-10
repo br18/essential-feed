@@ -36,9 +36,22 @@ class LoadFeedImageDataFromCacheUseCaseTests: XCTestCase {
         })
     }
 
+    func test_loadImageDataFromURL_deliversNotFoundErrorOnNotFound() {
+        let (sut, store) = makeSUT()
+
+        expect(sut, toCompleteWith: notFound(), when: {
+            store.completeRetrieval(with: .none)
+        })
+    }
+
     private func failed() -> Result<Data, Error> {
         return .failure(LocalFeedImageDataLoader.LoadError.failed)
     }
+
+    private func notFound() -> Result<Data, Error> {
+        return .failure(LocalFeedImageDataLoader.LoadError.notFound)
+    }
+
 
     private func expect(_ sut: LocalFeedImageDataLoader, toCompleteWith expectedResult: Result<Data, Error>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
         action()
