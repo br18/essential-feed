@@ -1,6 +1,7 @@
 import XCTest
 import FeedCacheInfra
 import SharedTestHelpers
+import FeedCache
 
 class CoreDataFeedImageDataStoreTests: XCTestCase {
 
@@ -8,6 +9,16 @@ class CoreDataFeedImageDataStoreTests: XCTestCase {
         let sut = makeSUT()
 
         expect(sut, toCompleteRetrievalWith: notFound(), for: anyURL())
+    }
+
+    func test_retrieveImageData_deliversNotFoundWhenStoredDataURLDoesNotMatch() {
+        let sut = makeSUT()
+        let url = URL(string: "http://a-url.com")!
+        let nonMatchingURL = URL(string: "http://another-url.com")!
+
+        insert(anyData(), for: url, into: sut)
+
+        expect(sut, toCompleteRetrievalWith: notFound(), for: nonMatchingURL)
     }
 
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> CoreDataFeedStore {
@@ -31,5 +42,19 @@ class CoreDataFeedImageDataStoreTests: XCTestCase {
         default:
             XCTFail("Expected \(expectedResult), got \(receivedResult) instead", file: file, line: line)
         }
+    }
+
+    private func insert(_ data: Data, for url: URL, into sut: CoreDataFeedStore, file: StaticString = #filePath, line: UInt = #line) {
+        do {
+            let image = localImage(url: url)
+            try sut.insert([image], timestamp: Date())
+            try sut.insert(data, for: url)
+        } catch {
+            XCTFail("Failed to insert \(data) with error \(error)", file: file, line: line)
+        }
+    }
+
+    private func localImage(url: URL) -> LocalFeedImage {
+        return LocalFeedImage(id: UUID(), description: "any", location: "any", url: url)
     }
 }
