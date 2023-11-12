@@ -37,7 +37,10 @@ extension FeedImageCellController: UITableViewDataSource, UITableViewDelegate, U
         cell?.descriptionLabel.text = viewModel.description
         cell?.feedImageView.image = nil
         cell?.feedImageRetryButton.isHidden = true
-        cell?.onRetry = { }
+        cell?.feedImageContainer.isShimmering = true
+        cell?.onRetry = { [weak self] in
+            self?.delegate.didRequestImage()
+        }
         cell?.onReuse = { [weak self] in
             self?.releaseCellForReuse()
         }
@@ -82,6 +85,7 @@ extension FeedImageCellController: ResourceView, ResourceLoadingView, ResourceEr
     }
 
     public func display(_ viewModel: ResourceLoadingViewModel) {
+        cell?.feedImageContainer.isShimmering = viewModel.isLoading
     }
 
     public func display(_ viewModel: ResourceErrorViewModel) {

@@ -25,4 +25,8 @@ extension FeedImageCell {
     var renderedImage: Data? {
         return feedImageView.image?.pngData()
     }
+
+    var isShowingImageLoadingIndicator: Bool {
+        return feedImageContainer.isShimmering
+    }
 }
