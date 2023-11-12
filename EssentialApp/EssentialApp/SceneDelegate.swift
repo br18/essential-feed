@@ -8,21 +8,55 @@
 import UIKit
 import Combine
 import FeedFeature
+import SharedAPI
+import FeedCache
+import SharedAPIInfra
+import FeedAPI
+import FeedCacheInfra
+import CoreData
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
     var window: UIWindow?
 
+    private lazy var scheduler: AnyDispatchQueueScheduler = DispatchQueue(
+        label: "com.essentialdeveloper.infra.queue",
+        qos: .userInitiated,
+        attributes: .concurrent
+    ).eraseToAnyScheduler()
+
+    private lazy var httpClient: HTTPClient = {
+        URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
+    }()
+
+    private lazy var store: FeedStore & FeedImageDataStore = {
+        return try! CoreDataFeedStore(
+            storeURL: NSPersistentContainer
+                .defaultDirectoryURL()
+                .appendingPathComponent("feed-store.sqlite"))
+    }()
+
+    private lazy var localFeedLoader: LocalFeedLoader = {
+        LocalFeedLoader(store: store, currentDate: Date.init)
+    }()
+
+    private lazy var baseURL = URL(string: "https://ile-api.essentialdeveloper.com/essential-feed")!
+
+    private lazy var navigationController = UINavigationController(
+        rootViewController: FeedUIComposer.feedComposedWith(
+            feedLoader: makeRemoteFeedLoader,
+            imageLoader: { _ in
+                Just(Data()).setFailureType(to: Error.self).eraseToAnyPublisher()
+            }))
+
+
+    convenience init(httpClient: HTTPClient, store: FeedStore & FeedImageDataStore, scheduler: AnyDispatchQueueScheduler) {
+        self.init()
+        self.httpClient = httpClient
+        self.store = store
+        self.scheduler = scheduler
+    }
+
     func configureWindow() {
-        let emptyFeedLoader: () -> AnyPublisher<[FeedImage], Error> = {
-            Just([FeedImage]()).setFailureType(to: Error.self).eraseToAnyPublisher()
-        }
-        let emptyImageLoader: (URL) -> AnyPublisher<Data, Error> = { _ in
-            Just(Data()).setFailureType(to: Error.self).eraseToAnyPublisher()
-        }
-        let feedViewController = FeedUIComposer.feedComposedWith(feedLoader: emptyFeedLoader,
-                                                                 imageLoader: emptyImageLoader)
-        let navigationController = UINavigationController(rootViewController: feedViewController)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
@@ -63,6 +97,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
+
+    private func makeRemoteFeedLoader() -> AnyPublisher<[FeedImage], Error> {
+        let url = FeedEndpoint.get.url(baseURL: baseURL)
+
+        return httpClient
+            .getPublisher(url: url)
+            .tryMap(FeedItemsMapper.map)
+            .eraseToAnyPublisher()
+    }
 
 }
 
