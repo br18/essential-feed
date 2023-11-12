@@ -6,12 +6,24 @@
 //
 
 import UIKit
+import Combine
+import FeedFeature
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
     func configureWindow() {
+        let emptyFeedLoader: () -> AnyPublisher<[FeedImage], Error> = {
+            Just([FeedImage]()).setFailureType(to: Error.self).eraseToAnyPublisher()
+        }
+        let emptyImageLoader: (URL) -> AnyPublisher<Data, Error> = { _ in
+            Just(Data()).setFailureType(to: Error.self).eraseToAnyPublisher()
+        }
+        let feedViewController = FeedUIComposer.feedComposedWith(feedLoader: emptyFeedLoader,
+                                                                 imageLoader: emptyImageLoader)
+        let navigationController = UINavigationController(rootViewController: feedViewController)
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
 
