@@ -29,7 +29,7 @@ public final class LoadResourcePresenter<Resource, View: ResourceView> {
         self.mapper = { $0 }
     }
 
-    public init(resourceView: View, loadingView: ResourceLoadingView, errorView: ResourceErrorView, mapper: @escaping Mapper) where Resource == View.ResourceViewModel {
+    public init(resourceView: View, loadingView: ResourceLoadingView, errorView: ResourceErrorView, mapper: @escaping Mapper) {
         self.resourceView = resourceView
         self.loadingView = loadingView
         self.errorView = errorView

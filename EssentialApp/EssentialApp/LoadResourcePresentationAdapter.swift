@@ -1,4 +1,5 @@
 import Foundation
+import FeedUI
 import UIKit
 import Combine
 import SharedPresentation
@@ -38,5 +39,16 @@ final class LoadResourcePresentationAdapter<Resource, View: ResourceView> {
                 }, receiveValue: { [weak self] resource in
                     self?.presenter?.didFinishLoading(with: resource)
                 })
+    }
+}
+
+extension LoadResourcePresentationAdapter: FeedImageCellControllerDelegate {
+    func didRequestImage() {
+        loadResource()
+    }
+
+    func didCancelImageRequest() {
+        cancellable?.cancel()
+        cancellable = nil
     }
 }

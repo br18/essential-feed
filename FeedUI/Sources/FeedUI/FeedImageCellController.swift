@@ -2,16 +2,24 @@ import Foundation
 import UIKit
 import FeedPresentation
 import SharedUI
+import SharedPresentation
+
+public protocol FeedImageCellControllerDelegate {
+    func didRequestImage()
+    func didCancelImageRequest()
+}
 
 public final class FeedImageCellController: NSObject {
     public typealias ResourceViewModel = UIImage
 
     private let viewModel: FeedImageViewModel
+    private let delegate: FeedImageCellControllerDelegate
     private let selection: () -> Void
     private var cell: FeedImageCell?
 
-    public init(viewModel: FeedImageViewModel, selection: @escaping () -> Void) {
+    public init(viewModel: FeedImageViewModel, delegate: FeedImageCellControllerDelegate, selection: @escaping () -> Void) {
         self.viewModel = viewModel
+        self.delegate = delegate
         self.selection = selection
     }
 }
@@ -29,10 +37,11 @@ extension FeedImageCellController: UITableViewDataSource, UITableViewDelegate, U
         cell?.descriptionLabel.text = viewModel.description
         cell?.feedImageView.image = nil
         cell?.feedImageRetryButton.isHidden = true
-        cell?.onRetry = {}
+        cell?.onRetry = { }
         cell?.onReuse = { [weak self] in
             self?.releaseCellForReuse()
         }
+        delegate.didRequestImage()
         return cell!
     }
 
@@ -62,3 +71,14 @@ extension FeedImageCellController: UITableViewDataSource, UITableViewDelegate, U
     }
 }
 
+extension FeedImageCellController: ResourceView, ResourceLoadingView, ResourceErrorView {
+    public func display(_ viewModel: UIImage) {
+        cell?.feedImageView.setImageAnimated(viewModel)
+    }
+
+    public func display(_ viewModel: ResourceLoadingViewModel) {
+    }
+
+    public func display(_ viewModel: ResourceErrorViewModel) {
+    }
+}
