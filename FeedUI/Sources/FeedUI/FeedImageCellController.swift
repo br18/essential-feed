@@ -89,5 +89,6 @@ extension FeedImageCellController: ResourceView, ResourceLoadingView, ResourceEr
     }
 
     public func display(_ viewModel: ResourceErrorViewModel) {
+        cell?.feedImageRetryButton.isHidden = viewModel.message == nil
     }
 }
