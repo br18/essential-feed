@@ -43,8 +43,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     private lazy var navigationController = UINavigationController(
         rootViewController: FeedUIComposer.feedComposedWith(
-            feedLoader: makeRemoteFeedLoader,
-            imageLoader: makeRemoteImageLoader))
+            feedLoader: makeRemoteFeedLoaderWithLocalFallback,
+            imageLoader: makeLocalImageLoaderWithRemoteFallback))
 
 
     convenience init(httpClient: HTTPClient, store: FeedStore & FeedImageDataStore, scheduler: AnyDispatchQueueScheduler) {
@@ -95,6 +95,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
+    private func makeRemoteFeedLoaderWithLocalFallback() -> AnyPublisher<[FeedImage], Error> {
+        makeRemoteFeedLoader()
+            .caching(to: localFeedLoader)
+            .fallback(to: localFeedLoader.loadPublisher)
+            .subscribe(on: scheduler)
+            .eraseToAnyPublisher()
+    }
 
     private func makeRemoteFeedLoader() -> AnyPublisher<[FeedImage], Error> {
         let url = FeedEndpoint.get.url(baseURL: baseURL)
@@ -105,10 +112,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .eraseToAnyPublisher()
     }
 
-    private func makeRemoteImageLoader(url: URL) -> FeedImageDataLoader.Publisher {
-        httpClient
-            .getPublisher(url: url)
-            .tryMap(FeedImageDataMapper.map)
+    private func makeLocalImageLoaderWithRemoteFallback(url: URL) -> FeedImageDataLoader.Publisher {
+        let localImageLoader = LocalFeedImageDataLoader(store: store)
+
+        return localImageLoader
+            .loadImageDataPublisher(from: url)
+            .fallback(to: { [httpClient, scheduler] in
+                httpClient
+                    .getPublisher(url: url)
+                    .tryMap(FeedImageDataMapper.map)
+                    .caching(to: localImageLoader, using: url)
+                    .subscribe(on: scheduler)
+                    .eraseToAnyPublisher()
+            })
             .subscribe(on: scheduler)
             .eraseToAnyPublisher()
     }
