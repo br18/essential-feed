@@ -141,5 +141,9 @@ extension ListViewController {
         cell(row: row, section: feedImagesSection)
     }
 
+    func renderedFeedImageData(at index: Int) -> Data? {
+        return simulateFeedImageViewVisible(at: index)?.renderedImage
+    }
+
     private var feedImagesSection: Int { 0 }
 }

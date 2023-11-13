@@ -44,9 +44,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private lazy var navigationController = UINavigationController(
         rootViewController: FeedUIComposer.feedComposedWith(
             feedLoader: makeRemoteFeedLoader,
-            imageLoader: { _ in
-                Just(Data()).setFailureType(to: Error.self).eraseToAnyPublisher()
-            }))
+            imageLoader: makeRemoteImageLoader))
 
 
     convenience init(httpClient: HTTPClient, store: FeedStore & FeedImageDataStore, scheduler: AnyDispatchQueueScheduler) {
@@ -107,5 +105,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .eraseToAnyPublisher()
     }
 
+    private func makeRemoteImageLoader(url: URL) -> FeedImageDataLoader.Publisher {
+        httpClient
+            .getPublisher(url: url)
+            .tryMap(FeedImageDataMapper.map)
+            .subscribe(on: scheduler)
+            .eraseToAnyPublisher()
+    }
 }
 
