@@ -123,6 +123,7 @@
 		B59F8AEA2AEBF748006B9D92 /* CI_macOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CI_macOS.xctestplan; sourceTree = "<group>"; };
 		B59F8AEB2AEC0125006B9D92 /* FeedCache */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = FeedCache; path = ../FeedCache; sourceTree = "<group>"; };
 		B5B2148F2B0414C400D65DE4 /* SnapshotTesting */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SnapshotTesting; path = ../SnapshotTesting; sourceTree = "<group>"; };
+		B5B214912B0418B000D65DE4 /* CI_iOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CI_iOS.xctestplan; sourceTree = "<group>"; };
 		B5B70B532AF98BB300320A29 /* FeedUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUIComposer.swift; sourceTree = "<group>"; };
 		B5B70B692AF98E3100320A29 /* FeedUIIntegrationTests+Assertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedUIIntegrationTests+Assertions.swift"; sourceTree = "<group>"; };
 		B5B70B6B2AF98E5F00320A29 /* UIView+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+TestHelpers.swift"; sourceTree = "<group>"; };
@@ -214,6 +215,7 @@
 		B56A84CD2AD982E7003D4C3F = {
 			isa = PBXGroup;
 			children = (
+				B5B214912B0418B000D65DE4 /* CI_iOS.xctestplan */,
 				B5B2148F2B0414C400D65DE4 /* SnapshotTesting */,
 				B5844FBB2AF2F55200E4AFAA /* FeedPresentation */,
 				B52038AD2AED629400DEBAA9 /* SharedPresentation */,

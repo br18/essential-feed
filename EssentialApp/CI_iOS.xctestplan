@@ -1,0 +1,95 @@
+{
+  "configurations" : [
+    {
+      "id" : "B17A1980-300E-40D3-9878-6D56FEDEB30C",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testExecutionOrdering" : "random",
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:EssentialApp.xcodeproj",
+        "identifier" : "B56A84EB2AD982EB003D4C3F",
+        "name" : "EssentialAppTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:EssentialApp.xcodeproj",
+        "identifier" : "B59F8ACA2AEBF135006B9D92",
+        "name" : "EssentialFeedAPIEndToEndTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:EssentialApp.xcodeproj",
+        "identifier" : "B55094A32AED44BC005DCC1D",
+        "name" : "EssentialFeedCacheIntegrationTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/FeedAPI",
+        "identifier" : "FeedAPITests",
+        "name" : "FeedAPITests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/FeedCache",
+        "identifier" : "FeedCacheTests",
+        "name" : "FeedCacheTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/FeedCacheInfra",
+        "identifier" : "FeedCacheInfraTests",
+        "name" : "FeedCacheInfraTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/FeedPresentation",
+        "identifier" : "FeedPresentationTests",
+        "name" : "FeedPresentationTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/FeedUI",
+        "identifier" : "FeedUITests",
+        "name" : "FeedUITests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/SharedAPIInfra",
+        "identifier" : "SharedAPIInfraTests",
+        "name" : "SharedAPIInfraTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/SharedPresentation",
+        "identifier" : "SharedPresentationTests",
+        "name" : "SharedPresentationTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/SharedUI",
+        "identifier" : "SharedUITests",
+        "name" : "SharedUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

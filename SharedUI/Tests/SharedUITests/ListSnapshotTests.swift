@@ -1,7 +1,7 @@
 import XCTest
 @testable import SharedPresentation
 import SharedUI
-import SharedTestHelpers
+import SnapshotTesting
 
 class ListSnapshotTests: XCTestCase {
 
