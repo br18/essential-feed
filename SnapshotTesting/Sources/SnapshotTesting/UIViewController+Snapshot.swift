@@ -1,4 +1,3 @@
-#if canImport(UIKit)
 import UIKit
 
 @available(iOS 17.0, *)
@@ -63,4 +62,3 @@ private final class SnapshotWindow: UIWindow {
         }
     }
 }
-#endif
