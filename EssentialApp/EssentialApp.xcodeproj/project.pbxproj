@@ -120,6 +120,7 @@
 		B56DDE712B0425FF0070DC25 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		B57267D22B077B0D009FC343 /* ImageCommentsFeature */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ImageCommentsFeature; path = ../ImageCommentsFeature; sourceTree = "<group>"; };
 		B57267D42B077D2E009FC343 /* ImageCommentsAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ImageCommentsAPI; path = ../ImageCommentsAPI; sourceTree = "<group>"; };
+		B57267D52B078476009FC343 /* ImageCommentsPresentation */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ImageCommentsPresentation; path = ../ImageCommentsPresentation; sourceTree = "<group>"; };
 		B5844FBB2AF2F55200E4AFAA /* FeedPresentation */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = FeedPresentation; path = ../FeedPresentation; sourceTree = "<group>"; };
 		B59F8ACB2AEBF135006B9D92 /* EssentialFeedAPIEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedAPIEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59F8ACD2AEBF135006B9D92 /* EssentialFeedAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialFeedAPIEndToEndTests.swift; sourceTree = "<group>"; };
@@ -218,6 +219,7 @@
 		B56A84CD2AD982E7003D4C3F = {
 			isa = PBXGroup;
 			children = (
+				B57267D52B078476009FC343 /* ImageCommentsPresentation */,
 				B57267D42B077D2E009FC343 /* ImageCommentsAPI */,
 				B57267D22B077B0D009FC343 /* ImageCommentsFeature */,
 				B5B214912B0418B000D65DE4 /* CI_iOS.xctestplan */,
