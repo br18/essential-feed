@@ -89,6 +89,13 @@
         "identifier" : "SharedUITests",
         "name" : "SharedUITests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/ImageCommentsAPI",
+        "identifier" : "ImageCommentsAPITests",
+        "name" : "ImageCommentsAPITests"
+      }
     }
   ],
   "version" : 1

@@ -47,6 +47,13 @@
         "identifier" : "SharedPresentationTests",
         "name" : "SharedPresentationTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/ImageCommentsAPI",
+        "identifier" : "ImageCommentsAPITests",
+        "name" : "ImageCommentsAPITests"
+      }
     }
   ],
   "version" : 1
