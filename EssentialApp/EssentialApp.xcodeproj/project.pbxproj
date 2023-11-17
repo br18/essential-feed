@@ -92,6 +92,7 @@
 		B524BB952AF9842A00722B7F /* UIRefreshControl+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+TestHelpers.swift"; sourceTree = "<group>"; };
 		B524BB972AF9844900722B7F /* UIControl+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+TestHelpers.swift"; sourceTree = "<group>"; };
 		B524BB992AF9846B00722B7F /* UIButton+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+TestHelpers.swift"; sourceTree = "<group>"; };
+		B52BA4B02B07B8610043B103 /* ImageCommentsUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ImageCommentsUI; path = ../ImageCommentsUI; sourceTree = "<group>"; };
 		B544EE532AFAD7040069ED2E /* FeedImageCell+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedImageCell+TestHelpers.swift"; sourceTree = "<group>"; };
 		B544EE552AFADA850069ED2E /* LoadResourcePresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadResourcePresentationAdapter.swift; sourceTree = "<group>"; };
 		B544EE572AFADAB00069ED2E /* CombineHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineHelpers.swift; sourceTree = "<group>"; };
@@ -219,6 +220,7 @@
 		B56A84CD2AD982E7003D4C3F = {
 			isa = PBXGroup;
 			children = (
+				B52BA4B02B07B8610043B103 /* ImageCommentsUI */,
 				B57267D52B078476009FC343 /* ImageCommentsPresentation */,
 				B57267D42B077D2E009FC343 /* ImageCommentsAPI */,
 				B57267D22B077B0D009FC343 /* ImageCommentsFeature */,
