@@ -4,12 +4,6 @@ import UIKit
 import FeedUI
 
 extension ListViewController {
-    public override func loadViewIfNeeded() {
-        super.loadViewIfNeeded()
-
-        tableView.frame = CGRect(x: 0, y: 0, width: 1, height: 1)
-    }
-
     func simulateAppearance() {
         if !isViewLoaded {
             loadViewIfNeeded()
@@ -86,9 +80,21 @@ extension ListViewController {
 }
 
 extension ListViewController {
+
     @discardableResult
     func simulateFeedImageViewVisible(at index: Int) -> FeedImageCell? {
         return feedImageView(at: index) as? FeedImageCell
+    }
+
+    @discardableResult
+    func simulateFeedImageBecomingVisibleAgain(at row: Int) -> FeedImageCell? {
+        let view = simulateFeedImageViewNotVisible(at: row)
+
+        let delegate = tableView.delegate
+        let index = IndexPath(row: row, section: feedImagesSection)
+        delegate?.tableView?(tableView, willDisplay: view!, forRowAt: index)
+
+        return view
     }
 
     @discardableResult
@@ -102,15 +108,10 @@ extension ListViewController {
         return view
     }
 
-    @discardableResult
-    func simulateFeedImageBecomingVisibleAgain(at row: Int) -> FeedImageCell? {
-        let view = simulateFeedImageViewNotVisible(at: row)
-
+    func simulateTapOnFeedImage(at row: Int) {
         let delegate = tableView.delegate
         let index = IndexPath(row: row, section: feedImagesSection)
-        delegate?.tableView?(tableView, willDisplay: view!, forRowAt: index)
-
-        return view
+        delegate?.tableView?(tableView, didSelectRowAt: index)
     }
 
     func simulateFeedImageViewNearVisible(at row: Int) {
@@ -126,11 +127,8 @@ extension ListViewController {
         let index = IndexPath(row: row, section: feedImagesSection)
         ds?.tableView?(tableView, cancelPrefetchingForRowsAt: [index])
     }
-
-    func simulateTapOnFeedImage(at row: Int) {
-        let delegate = tableView.delegate
-        let index = IndexPath(row: row, section: feedImagesSection)
-        delegate?.tableView?(tableView, didSelectRowAt: index)
+    func renderedFeedImageData(at index: Int) -> Data? {
+        return simulateFeedImageViewVisible(at: index)?.renderedImage
     }
 
     func numberOfRenderedFeedImageViews() -> Int {
@@ -139,10 +137,6 @@ extension ListViewController {
 
     func feedImageView(at row: Int) -> UITableViewCell? {
         cell(row: row, section: feedImagesSection)
-    }
-
-    func renderedFeedImageData(at index: Int) -> Data? {
-        return simulateFeedImageViewVisible(at: index)?.renderedImage
     }
 
     private var feedImagesSection: Int { 0 }

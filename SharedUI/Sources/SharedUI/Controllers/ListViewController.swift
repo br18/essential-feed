@@ -18,7 +18,12 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
         super.viewDidLoad()
 
         configureTableView()
-        refresh()
+        configureTraitCollectionObservers()
+
+        onViewIsAppearing = { vc in
+            vc.onViewIsAppearing = nil
+            vc.refresh()
+        }
     }
 
     public override func viewIsAppearing(_ animated: Bool) {
