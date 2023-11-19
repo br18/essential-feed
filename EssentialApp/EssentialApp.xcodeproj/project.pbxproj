@@ -64,6 +64,7 @@
 		B5B70B682AF98C0300320A29 /* SharedUI in Frameworks */ = {isa = PBXBuildFile; productRef = B5B70B672AF98C0300320A29 /* SharedUI */; };
 		B5B70B6A2AF98E3100320A29 /* FeedUIIntegrationTests+Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B70B692AF98E3100320A29 /* FeedUIIntegrationTests+Assertions.swift */; };
 		B5B70B6C2AF98E5F00320A29 /* UIView+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B70B6B2AF98E5F00320A29 /* UIView+TestHelpers.swift */; };
+		B5F85BCC2B0A8BEA008709C2 /* NullStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F85BCB2B0A8BEA008709C2 /* NullStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +141,7 @@
 		B5B70B532AF98BB300320A29 /* FeedUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUIComposer.swift; sourceTree = "<group>"; };
 		B5B70B692AF98E3100320A29 /* FeedUIIntegrationTests+Assertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedUIIntegrationTests+Assertions.swift"; sourceTree = "<group>"; };
 		B5B70B6B2AF98E5F00320A29 /* UIView+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+TestHelpers.swift"; sourceTree = "<group>"; };
+		B5F85BCB2B0A8BEA008709C2 /* NullStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,6 +287,7 @@
 				B544EE592AFADB220069ED2E /* FeedViewAdapter.swift */,
 				B544EE5B2AFADC000069ED2E /* WeakRefVirtualProxy.swift */,
 				B511E1292B09843100AF0C32 /* CommentsUIComposer.swift */,
+				B5F85BCB2B0A8BEA008709C2 /* NullStore.swift */,
 			);
 			path = EssentialApp;
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 			files = (
 				B544EE5A2AFADB220069ED2E /* FeedViewAdapter.swift in Sources */,
 				B56A84DE2AD982E7003D4C3F /* ViewController.swift in Sources */,
+				B5F85BCC2B0A8BEA008709C2 /* NullStore.swift in Sources */,
 				B544EE5C2AFADC000069ED2E /* WeakRefVirtualProxy.swift in Sources */,
 				B5B70B542AF98BB300320A29 /* FeedUIComposer.swift in Sources */,
 				B511E12A2B09843100AF0C32 /* CommentsUIComposer.swift in Sources */,
