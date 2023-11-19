@@ -1,5 +1,6 @@
 import FeedPresentation
 import SharedPresentation
+import ImageCommentsPresentation
 
 var feedTitle: String {
     FeedPresenter.title
@@ -11,4 +12,8 @@ private class DummyView: ResourceView {
 
 var loadError: String {
     LoadResourcePresenter<Any, DummyView>.loadError
+}
+
+var commentsTitle: String {
+    ImageCommentsPresenter.title
 }
