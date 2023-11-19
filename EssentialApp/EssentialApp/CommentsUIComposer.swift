@@ -22,7 +22,7 @@ public final class CommentsUIComposer {
         commentsController.onRefresh = presentationAdapter.loadResource
 
         presentationAdapter.presenter = LoadResourcePresenter(
-            resourceView: CommentsViewAdapter(),
+            resourceView: CommentsViewAdapter(controller: commentsController),
             loadingView: WeakRefVirtualProxy(commentsController),
             errorView: WeakRefVirtualProxy(commentsController),
             mapper: { ImageCommentsPresenter.map($0) })
@@ -40,5 +40,15 @@ public final class CommentsUIComposer {
 }
 
 final class CommentsViewAdapter: ResourceView {
-    func display(_ viewModel: ImageCommentsViewModel) { }
+    private weak var controller: ListViewController?
+
+    init(controller: ListViewController) {
+        self.controller = controller
+    }
+
+    func display(_ viewModel: ImageCommentsViewModel) {
+        controller?.display(viewModel.comments.map { viewModel in
+            CellController(id: viewModel, ImageCommentCellController(model: viewModel))
+        })
+    }
 }
