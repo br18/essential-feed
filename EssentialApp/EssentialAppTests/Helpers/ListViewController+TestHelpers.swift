@@ -196,5 +196,8 @@ extension ListViewController {
         let index = IndexPath(row: 0, section: feedLoadMoreSection)
         delegate?.tableView?(tableView, didSelectRowAt: index)
     }
-    
+
+    var canLoadMoreFeed: Bool {
+        loadMoreFeedCell() != nil
+    }
 }
