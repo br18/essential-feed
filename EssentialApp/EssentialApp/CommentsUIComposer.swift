@@ -5,14 +5,23 @@ import ImageCommentsFeature
 import Combine
 import ImageCommentsPresentation
 import ImageCommentsUI
+import SharedPresentation
 
 public final class CommentsUIComposer {
+    private typealias CommentsPresentationAdapter = LoadResourcePresentationAdapter<[ImageComment], CommentsViewAdapter>
+
     private init() {}
 
     public static func commentsComposedWith(
         commentsLoader: @escaping () -> AnyPublisher<[ImageComment], Error>
     ) -> ListViewController {
-        return makeCommentsViewController(title: ImageCommentsPresenter.title)
+
+        let presentationAdapter = CommentsPresentationAdapter(loader: commentsLoader)
+
+        let commentsController = makeCommentsViewController(title: ImageCommentsPresenter.title)
+        commentsController.onRefresh = presentationAdapter.loadResource
+
+        return commentsController
     }
 
     private static func makeCommentsViewController(title: String) -> ListViewController {
@@ -22,4 +31,8 @@ public final class CommentsUIComposer {
         controller.title = title
         return controller
     }
+}
+
+final class CommentsViewAdapter: ResourceView {
+    func display(_ viewModel: ImageCommentsViewModel) { }
 }
