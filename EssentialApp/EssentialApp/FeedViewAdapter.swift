@@ -5,6 +5,7 @@ import SharedPresentation
 import FeedFeature
 import UIKit
 import FeedUI
+import SharedAPI
 
 final class FeedViewAdapter: ResourceView {
     private weak var controller: ListViewController?
@@ -23,11 +24,11 @@ final class FeedViewAdapter: ResourceView {
         self.selection = selection
     }
 
-    func display(_ viewModel: [FeedImage]) {
+    func display(_ viewModel: Paginated<FeedImage>) {
         guard let controller = controller else { return }
 
         var currentFeed = self.currentFeed
-        let feed: [CellController] = viewModel.map { model in
+        let feed: [CellController] = viewModel.items.map { model in
             if let controller = currentFeed[model] {
                 return controller
             }
