@@ -54,6 +54,34 @@
         "identifier" : "ImageCommentsAPITests",
         "name" : "ImageCommentsAPITests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/FeedPresentation",
+        "identifier" : "FeedPresentationTests",
+        "name" : "FeedPresentationTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/ImageCommentsPresentation",
+        "identifier" : "ImageCommentsPresentationTests",
+        "name" : "ImageCommentsPresentationTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:EssentialApp.xcodeproj",
+        "identifier" : "B59F8ACA2AEBF135006B9D92",
+        "name" : "EssentialFeedAPIEndToEndTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:EssentialApp.xcodeproj",
+        "identifier" : "B55094A32AED44BC005DCC1D",
+        "name" : "EssentialFeedCacheIntegrationTests"
+      }
     }
   ],
   "version" : 1

@@ -17,6 +17,28 @@
             default = "YES">
          </TestPlanReference>
       </TestPlans>
+      <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ImageCommentsPresentationTests"
+               BuildableName = "ImageCommentsPresentationTests"
+               BlueprintName = "ImageCommentsPresentationTests"
+               ReferencedContainer = "container:../ImageCommentsPresentation">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ImageCommentsUITests"
+               BuildableName = "ImageCommentsUITests"
+               BlueprintName = "ImageCommentsUITests"
+               ReferencedContainer = "container:../ImageCommentsUI">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"

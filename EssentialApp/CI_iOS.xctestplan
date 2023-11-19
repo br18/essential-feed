@@ -96,6 +96,20 @@
         "identifier" : "ImageCommentsAPITests",
         "name" : "ImageCommentsAPITests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/ImageCommentsPresentation",
+        "identifier" : "ImageCommentsPresentationTests",
+        "name" : "ImageCommentsPresentationTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/ImageCommentsUI",
+        "identifier" : "ImageCommentsUITests",
+        "name" : "ImageCommentsUITests"
+      }
     }
   ],
   "version" : 1
